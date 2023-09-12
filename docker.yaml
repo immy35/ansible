@@ -46,7 +46,7 @@
   - name: Install docker
     remote_user: ubuntu
     apt:
-      name: docker-ce
+      name: docker
       state: present
       update_cache: yes
     #notify: Start docker on boot
