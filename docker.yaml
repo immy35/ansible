@@ -1,6 +1,6 @@
 ---
 - name: install docker
-  hosts: "192.168.122.237"
+  hosts: "192.168.122.74"
   become: yes
   tasks:
     - name: install docker dependencies
