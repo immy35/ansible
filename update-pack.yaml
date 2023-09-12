@@ -1,17 +1,33 @@
-- hosts: 192.168.122.74
+- name: Variables playbook
 
-  become: yes
+  hosts: all
+
+  vars:
+
+      state: latest
+
+      user: bob
+
   tasks:
-    # Upgrade packages
-    - name: upgrade apt packages
-      become: true
-      apt:
-        upgrade: yes
-        update_cache: yes
 
-    # Check if reboot is required
-    - name: check if system reboot is required
-      become: true
-      stat:
-        path: /var/run/reboot-required
-      register: reboot_required
+  - name: Add the user {{ user }}
+
+    ansible.builtin.user:
+
+      name: "{{ user }}"
+
+  - name: Upgrade all apt packages
+
+    apt:
+
+      force_apt_get: yes
+
+      upgrade: dist
+
+  - name: Install the {{ state }} of package "nginx"
+
+    apt:
+
+      name: "nginx"
+
+      state: "{{ state }}"
