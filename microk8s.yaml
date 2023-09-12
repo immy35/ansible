@@ -7,5 +7,3 @@
       snap:
         classic: yes
         name: microk8s
-    - name: add userpermissions
-      shell: "usermod -aG microk8s {{ lookup('env','USER') }}"
