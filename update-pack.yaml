@@ -1,4 +1,4 @@
-- hosts: "{{ hosts }}"
+- hosts: 192.168.122.74
 
   become: yes
   tasks:
