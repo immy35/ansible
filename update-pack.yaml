@@ -1,33 +1,6 @@
-- name: Variables playbook
-
-  hosts: all
-
-  vars:
-
-      state: latest
-
-      user: bob
-
+---
+- hosts: all
   tasks:
-
-  - name: Add the user {{ user }}
-
-    ansible.builtin.user:
-
-      name: "{{ user }}"
-
-  - name: Upgrade all apt packages
-
-    apt:
-
-      force_apt_get: yes
-
-      upgrade: dist
-
-  - name: Install the {{ state }} of package "nginx"
-
-    apt:
-
-      name: "nginx"
-
-      state: "{{ state }}"
+    - name: print facts
+      debug:
+        msg: "IPv4 address: {{ ansible_default_ipv4.address }}"
